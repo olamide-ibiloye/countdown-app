@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Controls, Display, Navigation } from "./components";
+import { Box } from "@mui/material";
+import DataProvider from "./providers/DataProvider";
+import TimeUp from "./components/timeUp/TimeUp";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const displayStyles = {
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100vh",
+    backgroundColor: "black",
+    display: "grid",
+    gridTemplateRows: "repeat(3, 1fr)",
+    px: 5,
+};
+
+const App = () => {
+    return (
+        <DataProvider>
+            <TimeUp />
+            <Box sx={displayStyles}>
+                <Controls />
+                <Display />
+                <Navigation />
+            </Box>
+        </DataProvider>
+    );
+};
 
 export default App;
