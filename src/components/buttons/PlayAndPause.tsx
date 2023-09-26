@@ -20,6 +20,7 @@ const PlayAndPause = () => {
     const pause = () => {};
 
     const play = () => {};
+
     return (
         <IconButton onClick={togglePlay}>
             {!isPlaying && <PlayCircleOutlineIcon sx={buttonStyle} />}

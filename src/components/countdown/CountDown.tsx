@@ -3,13 +3,9 @@ import React, { useContext, useEffect, useState } from "react";
 import { getFormattedTime } from "../../utils/getFormattedTime";
 import { DataContext } from "../../providers/DataProvider";
 
-interface TimerProps {
-    duration: number;
-}
-
-const Timer: React.FC<TimerProps> = ({ duration }) => {
+const Timer = () => {
+    const { setShowTimeUp, duration } = useContext(DataContext);
     const [time, setTime] = useState<number>(duration);
-    const { setShowTimeUp } = useContext(DataContext);
 
     useEffect(() => {
         time > 0 &&
@@ -38,8 +34,6 @@ const Timer: React.FC<TimerProps> = ({ duration }) => {
                         lg: hourIncluded ? 350 : 550,
                         xl: hourIncluded ? 450 : 650,
                     },
-                    display: "flex",
-                    flex: 1,
                 }}
             >
                 {getFormattedTime(time)}

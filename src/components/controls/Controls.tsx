@@ -1,20 +1,23 @@
 import { Box } from "@mui/material";
 import React from "react";
-import { TimeInput, ButtonGroup } from "../buttons";
+import { SetTime, ButtonGroup } from "../buttons";
 
 const Controls = () => {
     return (
         <Box
             sx={{
-                display: "grid",
-                gridTemplateColumns: "5fr 1fr",
-                gap: 3,
+                display: "flex",
+                flexDirection: "row",
                 justifyContent: "center",
                 alignItems: "center",
             }}
         >
-            <TimeInput />
-            <ButtonGroup />
+            <Box sx={{ flex: 1 }}>
+                <SetTime />
+            </Box>
+            <Box>
+                <ButtonGroup />
+            </Box>
         </Box>
     );
 };
