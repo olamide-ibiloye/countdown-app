@@ -17,15 +17,23 @@ const PlayAndPause = () => {
     } = useContext(DataContext);
 
     const togglePlay = () => {
-        setIsPlaying(!isPlaying);
+        if (!editMode) setIsPlaying(!isPlaying);
 
-        if (!isPlaying && editMode) {
-            setTimeItems({
-                ...timeItems,
-                totalMilliseconds: getMilliseconds(timeItems),
-            });
+        if (editMode) {
+            if (
+                timeItems.hours !== 0 ||
+                timeItems.minutes !== 0 ||
+                timeItems.seconds !== 0
+            ) {
+                setIsPlaying(!isPlaying);
 
-            setEditMode(false);
+                setTimeItems({
+                    ...timeItems,
+                    totalMilliseconds: getMilliseconds(timeItems),
+                });
+
+                setEditMode(!editMode);
+            }
         }
     };
 

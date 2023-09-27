@@ -17,15 +17,24 @@ const FigureBlock: React.FC<FigureBlockProps> = ({ toggle, value }) => {
 
     const toggleUp = () => {
         if (toggle === "hours") {
-            setTimeItems({ ...timeItems, hours: timeItems.hours + 1 });
+            setTimeItems({
+                ...timeItems,
+                hours: timeItems.hours === 59 ? 0 : timeItems.hours + 1,
+            });
         }
 
         if (toggle === "minutes") {
-            setTimeItems({ ...timeItems, minutes: timeItems.minutes + 1 });
+            setTimeItems({
+                ...timeItems,
+                minutes: timeItems.minutes === 59 ? 0 : timeItems.minutes + 1,
+            });
         }
 
         if (toggle === "seconds") {
-            setTimeItems({ ...timeItems, seconds: timeItems.seconds + 1 });
+            setTimeItems({
+                ...timeItems,
+                seconds: timeItems.seconds === 59 ? 0 : timeItems.seconds + 1,
+            });
         }
     };
 

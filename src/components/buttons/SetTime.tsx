@@ -15,12 +15,21 @@ const SetTime = () => {
 
     const handleClick = () => {
         if (editMode) {
-            const newDuration = getMilliseconds(timeItems);
-            setTimeItems({ ...timeItems, totalMilliseconds: newDuration });
-        }
+            if (
+                timeItems.hours !== 0 ||
+                timeItems.minutes !== 0 ||
+                timeItems.seconds !== 0
+            ) {
+                const newDuration = getMilliseconds(timeItems);
+                setTimeItems({ ...timeItems, totalMilliseconds: newDuration });
 
-        setIsPlaying(false);
-        setEditMode(!editMode);
+                setIsPlaying(false);
+                setEditMode(!editMode);
+            }
+        } else {
+            setIsPlaying(false);
+            setEditMode(!editMode);
+        }
     };
 
     return (
