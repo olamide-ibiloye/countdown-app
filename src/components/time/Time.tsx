@@ -1,5 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
+import { hoursIncludedTextSize } from "../constants/styles";
 
 const Time = () => {
     const [currentTime, setCurrentTime] = useState<string>(getCurrentTime());
@@ -30,13 +31,7 @@ const Time = () => {
                 sx={{
                     color: "white",
                     fontWeight: 900,
-                    fontSize: {
-                        xs: 100,
-                        sm: 150,
-                        md: 200,
-                        lg: 350,
-                        xl: 450,
-                    },
+                    fontSize: hoursIncludedTextSize,
                 }}
             >
                 {currentTime}

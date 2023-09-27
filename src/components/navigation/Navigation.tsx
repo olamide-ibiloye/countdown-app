@@ -8,11 +8,11 @@ import { DataContext } from "../../providers/DataProvider";
 import { useContext } from "react";
 
 const iconStyle = {
-    fontSize: 50,
+    fontSize: { xs: 40, md: 50 },
 };
 
 const actionStyle = {
-    mx: 5,
+    mx: { xs: 2, md: 5 },
     color: "white",
     ".MuiBottomNavigationAction-label.Mui-selected": {
         fontSize: 20,

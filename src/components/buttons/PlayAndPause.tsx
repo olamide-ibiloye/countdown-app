@@ -3,8 +3,7 @@ import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 import PauseCircleOutlineIcon from "@mui/icons-material/PauseCircleOutline";
 import { IconButton } from "@mui/material";
 import { DataContext } from "../../providers/DataProvider";
-
-const buttonStyle = { fontSize: 60, color: "white" };
+import { iconButtonStyle } from "../constants/styles";
 
 const PlayAndPause = () => {
     const { isPlaying, setIsPlaying, editMode, setEditMode } =
@@ -20,8 +19,8 @@ const PlayAndPause = () => {
 
     return (
         <IconButton onClick={togglePlay}>
-            {!isPlaying && <PlayCircleOutlineIcon sx={buttonStyle} />}
-            {isPlaying && <PauseCircleOutlineIcon sx={buttonStyle} />}
+            {!isPlaying && <PlayCircleOutlineIcon sx={iconButtonStyle} />}
+            {isPlaying && <PauseCircleOutlineIcon sx={iconButtonStyle} />}
         </IconButton>
     );
 };

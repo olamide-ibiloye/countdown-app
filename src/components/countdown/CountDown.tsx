@@ -2,6 +2,10 @@ import { Box, Typography } from "@mui/material";
 import React, { useContext, useEffect, useState } from "react";
 import { getFormattedTime } from "../../utils/getFormattedTime";
 import { DataContext } from "../../providers/DataProvider";
+import {
+    hoursExcludedTextSize,
+    hoursIncludedTextSize,
+} from "../constants/styles";
 
 const Timer = () => {
     const { setShowTimeUp, duration, isPlaying } = useContext(DataContext);
@@ -25,6 +29,7 @@ const Timer = () => {
         <Box
             sx={{
                 height: "100%",
+                width: "100%",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
@@ -35,13 +40,9 @@ const Timer = () => {
                 sx={{
                     color: "white",
                     fontWeight: 900,
-                    fontSize: {
-                        xs: hourIncluded ? 100 : 150,
-                        sm: hourIncluded ? 150 : 180,
-                        md: hourIncluded ? 200 : 400,
-                        lg: hourIncluded ? 350 : 550,
-                        xl: hourIncluded ? 450 : 650,
-                    },
+                    fontSize: hourIncluded
+                        ? hoursIncludedTextSize
+                        : hoursExcludedTextSize,
                 }}
             >
                 {getFormattedTime(time)}

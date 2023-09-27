@@ -1,5 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
+import { messageTextSize } from "../constants/styles";
 
 const Message = () => {
     const userMessage = "This is a default message";
@@ -20,7 +21,7 @@ const Message = () => {
                     fontWeight: 900,
                     display: "flex",
                     flex: 1,
-                    fontSize: 220,
+                    fontSize: messageTextSize,
                     textAlign: "center",
                     px: 5,
                     lineHeight: 0.9,

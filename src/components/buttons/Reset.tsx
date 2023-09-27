@@ -3,8 +3,7 @@ import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import { IconButton } from "@mui/material";
 import { DataContext } from "../../providers/DataProvider";
 import { getMilliseconds } from "../../utils/getMilliseconds";
-
-const buttonStyle = { fontSize: 60, color: "white" };
+import { iconButtonStyle } from "../constants/styles";
 
 const Reset = () => {
     const {
@@ -34,7 +33,7 @@ const Reset = () => {
 
     return (
         <IconButton onClick={toggleReset}>
-            <RestartAltIcon sx={buttonStyle} />
+            <RestartAltIcon sx={iconButtonStyle} />
         </IconButton>
     );
 };

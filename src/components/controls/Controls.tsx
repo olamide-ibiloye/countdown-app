@@ -10,12 +10,14 @@ const Controls = () => {
                 flexDirection: "row",
                 justifyContent: "center",
                 alignItems: "center",
+                maxWidth: "100vw",
+                mx: { xs: 3, md: 10, lg: 25 },
             }}
         >
-            <Box sx={{ flex: 1 }}>
+            <Box sx={{ display: "flex", flex: 1 }}>
                 <SetTime />
             </Box>
-            <Box>
+            <Box sx={{ display: "flex" }}>
                 <ButtonGroup />
             </Box>
         </Box>

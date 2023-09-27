@@ -31,7 +31,7 @@ const SetTime = () => {
             variant="contained"
             size="large"
             onClick={handleClick}
-            sx={{ display: feature === "countdown" ? "block" : "none" }}
+            sx={{ display: feature === "countdown" ? "block" : "none", ml: 2 }}
         >
             {editMode ? "Submit" : "Set Time"}
         </Button>

@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import FullscreenIcon from "@mui/icons-material/Fullscreen";
 import FullscreenExitIcon from "@mui/icons-material/FullscreenExit";
 import { IconButton } from "@mui/material";
-
-const buttonStyle = { fontSize: 60, color: "white" };
+import { iconButtonStyle } from "../constants/styles";
 
 const FullScreen = () => {
     const [isFullscreen, setIsFullscreen] = useState(false);
@@ -32,8 +31,8 @@ const FullScreen = () => {
 
     return (
         <IconButton onClick={toggleFullscreen}>
-            {isFullscreen && <FullscreenExitIcon sx={buttonStyle} />}
-            {!isFullscreen && <FullscreenIcon sx={buttonStyle} />}
+            {isFullscreen && <FullscreenExitIcon sx={iconButtonStyle} />}
+            {!isFullscreen && <FullscreenIcon sx={iconButtonStyle} />}
         </IconButton>
     );
 };

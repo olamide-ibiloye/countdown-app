@@ -5,21 +5,28 @@ import DataProvider from "./providers/DataProvider";
 import TimeUp from "./components/timeUp/TimeUp";
 
 const displayStyles = {
-    height: "100vh",
-    backgroundColor: "black",
+    width: "100%",
+    height: "100%",
     display: "grid",
-    gridTemplateRows: "1fr 2fr 1fr",
-    px: 5,
+    gridTemplateRows: "1fr 3fr 1fr",
 };
 
 const App = () => {
     return (
         <DataProvider>
-            <TimeUp />
-            <Box sx={displayStyles}>
-                <Controls />
-                <Display />
-                <Navigation />
+            <Box
+                sx={{
+                    height: "100vh",
+                    width: "100vw",
+                    backgroundColor: "black",
+                }}
+            >
+                <TimeUp />
+                <Box sx={displayStyles}>
+                    <Controls />
+                    <Display />
+                    <Navigation />
+                </Box>
             </Box>
         </DataProvider>
     );

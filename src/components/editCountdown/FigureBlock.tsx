@@ -2,6 +2,7 @@ import { Box, IconButton, Typography } from "@mui/material";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import React from "react";
+import { hoursIncludedTextSize } from "../constants/styles";
 
 const buttonStyle = { fontSize: 60, color: "white" };
 
@@ -38,13 +39,7 @@ const FigureBlock: React.FC<FigureBlockProps> = ({ value, setValue }) => {
                 sx={{
                     color: "white",
                     fontWeight: 900,
-                    fontSize: {
-                        xs: 100,
-                        sm: 150,
-                        md: 200,
-                        lg: 350,
-                        xl: 450,
-                    },
+                    fontSize: hoursIncludedTextSize,
                 }}
             >
                 {value < 10 ? `0${value}` : value}
