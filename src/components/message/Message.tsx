@@ -3,7 +3,7 @@ import React from "react";
 import { messageTextStyle } from "../constants/styles";
 
 const Message = () => {
-    const userMessage = "This is a default message";
+    const userMessage = "You have 5 more minutes!";
 
     return (
         <Box
