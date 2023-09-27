@@ -5,12 +5,10 @@ import DataProvider from "./providers/DataProvider";
 import TimeUp from "./components/timeUp/TimeUp";
 
 const displayStyles = {
-    justifyContent: "center",
-    alignItems: "center",
     height: "100vh",
     backgroundColor: "black",
     display: "grid",
-    gridTemplateRows: "repeat(3, 1fr)",
+    gridTemplateRows: "1fr 2fr 1fr",
     px: 5,
 };
 

@@ -12,6 +12,7 @@ const SetTime = () => {
         hours,
         minutes,
         seconds,
+        setIsPlaying,
     } = React.useContext(DataContext);
 
     const handleClick = () => {
@@ -21,6 +22,7 @@ const SetTime = () => {
             setDuration(newDuration);
         }
 
+        setIsPlaying(false);
         setEditMode(!editMode);
     };
 

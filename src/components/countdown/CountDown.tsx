@@ -4,11 +4,12 @@ import { getFormattedTime } from "../../utils/getFormattedTime";
 import { DataContext } from "../../providers/DataProvider";
 
 const Timer = () => {
-    const { setShowTimeUp, duration } = useContext(DataContext);
+    const { setShowTimeUp, duration, isPlaying } = useContext(DataContext);
     const [time, setTime] = useState<number>(duration);
 
     useEffect(() => {
-        time > 0 &&
+        isPlaying &&
+            time > 0 &&
             setTimeout(() => {
                 setTime(time - 1000);
             }, 1000);
@@ -16,12 +17,19 @@ const Timer = () => {
         if (time === 0) {
             setShowTimeUp(true);
         }
-    }, [time, setShowTimeUp]);
+    }, [time, isPlaying, setShowTimeUp]);
 
     let hourIncluded: boolean = getFormattedTime(time).length > 5;
 
     return (
-        <Box>
+        <Box
+            sx={{
+                height: "100%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+            }}
+        >
             <Typography
                 variant="h1"
                 sx={{

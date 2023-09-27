@@ -4,7 +4,7 @@ import React, { useContext } from "react";
 import { DataContext } from "../../providers/DataProvider";
 
 const TimeUp = () => {
-    const { showTimeUp, setShowTimeUp } = useContext(DataContext);
+    const { showTimeUp, setShowTimeUp, setIsPlaying } = useContext(DataContext);
 
     const displayStyles = {
         height: "100vh",
@@ -17,6 +17,7 @@ const TimeUp = () => {
 
     const handleClick = () => {
         setShowTimeUp(false);
+        setIsPlaying(false);
     };
 
     const timeUpMessage = "Time's Up";

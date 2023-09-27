@@ -10,7 +10,7 @@ const Display = () => {
     const { feature, editMode } = useContext(DataContext);
 
     return (
-        <Box>
+        <Box sx={{ height: "70vh" }}>
             {feature === "countdown" && !editMode && <CountDown />}
             {feature === "countdown" && editMode && <EditCountDown />}
             {feature === "time" && <Time />}

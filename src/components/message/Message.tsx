@@ -5,7 +5,14 @@ const Message = () => {
     const userMessage = "This is a default message";
 
     return (
-        <Box>
+        <Box
+            sx={{
+                height: "100%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+            }}
+        >
             <Typography
                 variant="h1"
                 sx={{

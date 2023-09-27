@@ -20,7 +20,15 @@ const FigureBlock: React.FC<FigureBlockProps> = ({ value, setValue }) => {
     };
 
     return (
-        <Box sx={{ display: "flex", flexDirection: "column" }}>
+        <Box
+            sx={{
+                display: "flex",
+                flexDirection: "column",
+                height: "100%",
+                justifyContent: "center",
+                alignItems: "center",
+            }}
+        >
             <IconButton onClick={toggleUp}>
                 <KeyboardArrowUpIcon sx={buttonStyle} />
             </IconButton>

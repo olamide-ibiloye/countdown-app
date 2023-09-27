@@ -23,16 +23,25 @@ const EditCountDown = () => {
         useContext(DataContext);
 
     return (
-        <Box sx={{ display: "flex", flexDirection: "row" }}>
-            <FigureBlock value={hours} setValue={setHours} />
-            <Typography variant="h1" sx={fontStyle}>
-                :
-            </Typography>
-            <FigureBlock value={minutes} setValue={setMinutes} />
-            <Typography variant="h1" sx={fontStyle}>
-                :
-            </Typography>
-            <FigureBlock value={seconds} setValue={setSeconds} />
+        <Box
+            sx={{
+                height: "100%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+            }}
+        >
+            <Box sx={{ display: "flex", flexDirection: "row" }}>
+                <FigureBlock value={hours} setValue={setHours} />
+                <Typography variant="h1" sx={fontStyle}>
+                    :
+                </Typography>
+                <FigureBlock value={minutes} setValue={setMinutes} />
+                <Typography variant="h1" sx={fontStyle}>
+                    :
+                </Typography>
+                <FigureBlock value={seconds} setValue={setSeconds} />
+            </Box>
         </Box>
     );
 };

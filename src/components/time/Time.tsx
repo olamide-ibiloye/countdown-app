@@ -17,7 +17,14 @@ const Time = () => {
     }, [currentTime]);
 
     return (
-        <Box>
+        <Box
+            sx={{
+                height: "100%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+            }}
+        >
             <Typography
                 variant="h1"
                 sx={{
@@ -30,8 +37,6 @@ const Time = () => {
                         lg: 350,
                         xl: 450,
                     },
-                    display: "flex",
-                    flex: 1,
                 }}
             >
                 {currentTime}
