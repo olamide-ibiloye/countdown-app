@@ -11,7 +11,7 @@ const Controls = () => {
                 justifyContent: "center",
                 alignItems: "center",
                 maxWidth: "100vw",
-                mx: { xs: 3, md: 10, lg: 25 },
+                mx: { xs: 1, md: 10, lg: 25 },
             }}
         >
             <Box sx={{ display: "flex", flex: 1 }}>

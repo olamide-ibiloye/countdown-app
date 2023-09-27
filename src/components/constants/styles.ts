@@ -7,8 +7,8 @@ export const hoursExcludedTextSize = {
 };
 
 export const hoursIncludedTextSize = {
-    xs: 100,
-    sm: 150,
+    xs: 90,
+    sm: 140,
     md: 200,
     lg: 300,
     xl: 380,

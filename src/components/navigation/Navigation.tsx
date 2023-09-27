@@ -12,10 +12,10 @@ const iconStyle = {
 };
 
 const actionStyle = {
-    mx: { xs: 2, md: 5 },
+    mx: { xs: 1, md: 5 },
     color: "white",
     ".MuiBottomNavigationAction-label.Mui-selected": {
-        fontSize: 20,
+        fontSize: { xs: 15, md: 20 },
         py: 1,
     },
 };

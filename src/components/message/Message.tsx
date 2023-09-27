@@ -23,7 +23,6 @@ const Message = () => {
                     flex: 1,
                     fontSize: messageTextSize,
                     textAlign: "center",
-                    px: 5,
                     lineHeight: 0.9,
                 }}
             >
