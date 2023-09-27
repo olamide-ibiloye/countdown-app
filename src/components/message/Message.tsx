@@ -19,8 +19,6 @@ const Message = () => {
                 sx={{
                     color: "white",
                     fontWeight: 900,
-                    display: "flex",
-                    flex: 1,
                     fontSize: messageTextSize,
                     textAlign: "center",
                     lineHeight: 0.9,

@@ -17,7 +17,9 @@ const FigureBlock: React.FC<FigureBlockProps> = ({ value, setValue }) => {
     };
 
     const toggleDown = () => {
-        setValue(value - 1);
+        if (value > 0) {
+            setValue(value - 1);
+        }
     };
 
     return (

@@ -2,33 +2,17 @@ import React, { useContext } from "react";
 import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import { IconButton } from "@mui/material";
 import { DataContext } from "../../providers/DataProvider";
-import { getMilliseconds } from "../../utils/getMilliseconds";
 import { iconButtonStyle } from "../constants/styles";
 
 const Reset = () => {
-    const {
-        editMode,
-        setEditMode,
-        setDuration,
-        hours,
-        minutes,
-        seconds,
-        isPlaying,
-        setIsPlaying,
-    } = useContext(DataContext);
+    const { setIsPlaying, duration, setTime } = useContext(DataContext);
 
     const toggleReset = () => {
-        if (isPlaying) {
-            setIsPlaying(false);
-        }
+        setIsPlaying(false);
 
-        const newDuration = getMilliseconds({ hours, minutes, seconds });
-
-        setDuration(newDuration);
-
-        if (editMode) {
-            setEditMode(false);
-        }
+        setTimeout(() => {
+            setTime(duration);
+        }, 1000);
     };
 
     return (

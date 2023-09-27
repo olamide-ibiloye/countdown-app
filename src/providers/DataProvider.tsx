@@ -1,4 +1,4 @@
-import React, { createContext, useState, ReactNode } from "react";
+import React, { createContext, useState, ReactNode, useEffect } from "react";
 
 interface DataContextType {
     feature: string;
@@ -17,6 +17,8 @@ interface DataContextType {
     setEditMode: React.Dispatch<React.SetStateAction<boolean>>;
     isPlaying: boolean;
     setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>;
+    time: number;
+    setTime: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const initialContext: DataContextType = {
@@ -36,6 +38,8 @@ const initialContext: DataContextType = {
     setEditMode: () => {},
     isPlaying: false,
     setIsPlaying: () => {},
+    time: 0,
+    setTime: () => {},
 };
 
 export const DataContext = createContext<DataContextType>(initialContext);
@@ -53,6 +57,25 @@ const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
     const [duration, setDuration] = useState<number>(600000);
     const [editMode, setEditMode] = useState<boolean>(false);
     const [isPlaying, setIsPlaying] = useState(false);
+    const [time, setTime] = useState<number>(duration);
+
+    useEffect(() => {
+        isPlaying &&
+            time > 0 &&
+            setTimeout(() => {
+                setTime(time - 1000);
+            }, 1000);
+
+        if (time === 0) {
+            setShowTimeUp(true);
+
+            setIsPlaying(false);
+
+            setTimeout(() => {
+                setTime(duration);
+            }, 1000);
+        }
+    }, [time, isPlaying, setShowTimeUp, duration]);
 
     return (
         <DataContext.Provider
@@ -73,6 +96,8 @@ const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
                 setEditMode,
                 isPlaying,
                 setIsPlaying,
+                time,
+                setTime,
             }}
         >
             {children}

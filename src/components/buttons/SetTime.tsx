@@ -8,11 +8,12 @@ const SetTime = () => {
         feature,
         editMode,
         setEditMode,
-        setDuration,
         hours,
         minutes,
         seconds,
         setIsPlaying,
+        setDuration,
+        setTime,
     } = React.useContext(DataContext);
 
     const handleClick = () => {
@@ -20,6 +21,7 @@ const SetTime = () => {
             const newDuration = getMilliseconds({ hours, minutes, seconds });
 
             setDuration(newDuration);
+            setTime(newDuration);
         }
 
         setIsPlaying(false);

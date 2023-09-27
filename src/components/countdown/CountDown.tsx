@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { getFormattedTime } from "../../utils/getFormattedTime";
 import { DataContext } from "../../providers/DataProvider";
 import {
@@ -8,20 +8,20 @@ import {
 } from "../constants/styles";
 
 const Timer = () => {
-    const { setShowTimeUp, duration, isPlaying } = useContext(DataContext);
-    const [time, setTime] = useState<number>(duration);
+    const { time } = useContext(DataContext);
+    // const [time, setTime] = useState<number>(duration);
 
-    useEffect(() => {
-        isPlaying &&
-            time > 0 &&
-            setTimeout(() => {
-                setTime(time - 1000);
-            }, 1000);
+    // useEffect(() => {
+    //     isPlaying &&
+    //         time > 0 &&
+    //         setTimeout(() => {
+    //             setTime(time - 1000);
+    //         }, 1000);
 
-        if (time === 0) {
-            setShowTimeUp(true);
-        }
-    }, [time, isPlaying, setShowTimeUp]);
+    //     if (time === 0) {
+    //         setShowTimeUp(true);
+    //     }
+    // }, [time, isPlaying, setShowTimeUp]);
 
     let hourIncluded: boolean = getFormattedTime(time).length > 5;
 
