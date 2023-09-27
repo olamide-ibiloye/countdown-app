@@ -12,21 +12,18 @@ const PlayAndPause = () => {
         setIsPlaying,
         editMode,
         setEditMode,
-        setDuration,
-        setTime,
-        hours,
-        minutes,
-        seconds,
+        timeItems,
+        setTimeItems,
     } = useContext(DataContext);
 
     const togglePlay = () => {
         setIsPlaying(!isPlaying);
 
         if (!isPlaying && editMode) {
-            const newDuration = getMilliseconds({ hours, minutes, seconds });
-
-            setDuration(newDuration);
-            setTime(newDuration);
+            setTimeItems({
+                ...timeItems,
+                totalMilliseconds: getMilliseconds(timeItems),
+            });
 
             setEditMode(false);
         }

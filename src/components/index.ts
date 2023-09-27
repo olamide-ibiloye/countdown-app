@@ -5,3 +5,5 @@ export { SetTime, FullScreen } from "./buttons";
 export { default as Navigation } from "./navigation/Navigation";
 export { default as Controls } from "./controls/Controls";
 export { default as EditCountDown } from "./countdown/CountDown";
+export { default as Main } from "./main/Main";
+export { default as TimeUp } from "./timeUp/TimeUp";

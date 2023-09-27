@@ -1,15 +1,7 @@
 import React from "react";
-import { Controls, Display, Navigation } from "./components";
 import { Box } from "@mui/material";
 import DataProvider from "./providers/DataProvider";
-import TimeUp from "./components/timeUp/TimeUp";
-
-const displayStyles = {
-    width: "100%",
-    height: "100%",
-    display: "grid",
-    gridTemplateRows: "1fr 3fr 1fr",
-};
+import { Main, TimeUp } from "./components";
 
 const App = () => {
     return (
@@ -22,11 +14,7 @@ const App = () => {
                 }}
             >
                 <TimeUp />
-                <Box sx={displayStyles}>
-                    <Controls />
-                    <Display />
-                    <Navigation />
-                </Box>
+                <Main />
             </Box>
         </DataProvider>
     );

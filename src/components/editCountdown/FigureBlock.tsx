@@ -1,24 +1,45 @@
 import { Box, IconButton, Typography } from "@mui/material";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import React from "react";
+import React, { useContext } from "react";
 import { hoursIncludedTextSize } from "../constants/styles";
+import { DataContext } from "../../providers/DataProvider";
 
 const buttonStyle = { fontSize: 60, color: "white" };
 
 interface FigureBlockProps {
+    toggle: string;
     value: number;
-    setValue: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const FigureBlock: React.FC<FigureBlockProps> = ({ value, setValue }) => {
+const FigureBlock: React.FC<FigureBlockProps> = ({ toggle, value }) => {
+    const { timeItems, setTimeItems } = useContext(DataContext);
+
     const toggleUp = () => {
-        setValue(value + 1);
+        if (toggle === "hours") {
+            setTimeItems({ ...timeItems, hours: timeItems.hours + 1 });
+        }
+
+        if (toggle === "minutes") {
+            setTimeItems({ ...timeItems, minutes: timeItems.minutes + 1 });
+        }
+
+        if (toggle === "seconds") {
+            setTimeItems({ ...timeItems, seconds: timeItems.seconds + 1 });
+        }
     };
 
     const toggleDown = () => {
-        if (value > 0) {
-            setValue(value - 1);
+        if (toggle === "hours" && timeItems.hours > 0) {
+            setTimeItems({ ...timeItems, hours: timeItems.hours - 1 });
+        }
+
+        if (toggle === "minutes" && timeItems.minutes > 0) {
+            setTimeItems({ ...timeItems, minutes: timeItems.minutes - 1 });
+        }
+
+        if (toggle === "seconds" && timeItems.seconds > 0) {
+            setTimeItems({ ...timeItems, seconds: timeItems.seconds - 1 });
         }
     };
 

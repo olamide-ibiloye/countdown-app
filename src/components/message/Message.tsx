@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
-import { messageTextSize } from "../constants/styles";
+import { messageTextStyle } from "../constants/styles";
 
 const Message = () => {
     const userMessage = "This is a default message";
@@ -14,16 +14,7 @@ const Message = () => {
                 alignItems: "center",
             }}
         >
-            <Typography
-                variant="h1"
-                sx={{
-                    color: "white",
-                    fontWeight: 900,
-                    fontSize: messageTextSize,
-                    textAlign: "center",
-                    lineHeight: 0.9,
-                }}
-            >
+            <Typography variant="h1" sx={messageTextStyle}>
                 {userMessage.toUpperCase()}
             </Typography>
         </Box>

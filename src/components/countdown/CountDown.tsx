@@ -8,22 +8,9 @@ import {
 } from "../constants/styles";
 
 const Timer = () => {
-    const { time } = useContext(DataContext);
-    // const [time, setTime] = useState<number>(duration);
+    const { timeItems } = useContext(DataContext);
 
-    // useEffect(() => {
-    //     isPlaying &&
-    //         time > 0 &&
-    //         setTimeout(() => {
-    //             setTime(time - 1000);
-    //         }, 1000);
-
-    //     if (time === 0) {
-    //         setShowTimeUp(true);
-    //     }
-    // }, [time, isPlaying, setShowTimeUp]);
-
-    let hourIncluded: boolean = getFormattedTime(time).length > 5;
+    let hourIncluded: boolean = timeItems.hours > 0;
 
     return (
         <Box
@@ -45,7 +32,7 @@ const Timer = () => {
                         : hoursExcludedTextSize,
                 }}
             >
-                {getFormattedTime(time)}
+                {getFormattedTime(timeItems.totalMilliseconds)}
             </Typography>
         </Box>
     );

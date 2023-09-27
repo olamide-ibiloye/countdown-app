@@ -19,8 +19,7 @@ const fontStyle = {
 };
 
 const EditCountDown = () => {
-    const { hours, setHours, minutes, setMinutes, seconds, setSeconds } =
-        useContext(DataContext);
+    const { timeItems } = useContext(DataContext);
 
     return (
         <Box
@@ -32,15 +31,15 @@ const EditCountDown = () => {
             }}
         >
             <Box sx={{ display: "flex", flexDirection: "row" }}>
-                <FigureBlock value={hours} setValue={setHours} />
+                <FigureBlock value={timeItems.hours} toggle="hours" />
                 <Typography variant="h1" sx={fontStyle}>
                     :
                 </Typography>
-                <FigureBlock value={minutes} setValue={setMinutes} />
+                <FigureBlock value={timeItems.minutes} toggle="minutes" />
                 <Typography variant="h1" sx={fontStyle}>
                     :
                 </Typography>
-                <FigureBlock value={seconds} setValue={setSeconds} />
+                <FigureBlock value={timeItems.seconds} toggle="seconds" />
             </Box>
         </Box>
     );

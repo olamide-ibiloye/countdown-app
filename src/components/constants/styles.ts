@@ -22,4 +22,16 @@ export const messageTextSize = {
     xl: 250,
 };
 
+export const messageTextStyle = {
+    color: "white",
+    fontWeight: 900,
+    textAlign: "center",
+    lineHeight: 0.9,
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+    fontSize: messageTextSize,
+    display: "flex",
+};
+
 export const iconButtonStyle = { fontSize: { xs: 40, md: 60 }, color: "white" };

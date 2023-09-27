@@ -1,24 +1,24 @@
 import React, { createContext, useState, ReactNode, useEffect } from "react";
+import { getMilliseconds } from "../utils/getMilliseconds";
+
+interface TimeItems {
+    hours: number;
+    minutes: number;
+    seconds: number;
+    totalMilliseconds: number;
+}
 
 interface DataContextType {
     feature: string;
     setFeature: React.Dispatch<React.SetStateAction<string>>;
     showTimeUp: boolean;
     setShowTimeUp: React.Dispatch<React.SetStateAction<boolean>>;
-    hours: number;
-    setHours: React.Dispatch<React.SetStateAction<number>>;
-    minutes: number;
-    setMinutes: React.Dispatch<React.SetStateAction<number>>;
-    seconds: number;
-    setSeconds: React.Dispatch<React.SetStateAction<number>>;
-    duration: number;
-    setDuration: React.Dispatch<React.SetStateAction<number>>;
     editMode: boolean;
     setEditMode: React.Dispatch<React.SetStateAction<boolean>>;
     isPlaying: boolean;
     setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>;
-    time: number;
-    setTime: React.Dispatch<React.SetStateAction<number>>;
+    timeItems: TimeItems;
+    setTimeItems: React.Dispatch<React.SetStateAction<TimeItems>>;
 }
 
 const initialContext: DataContextType = {
@@ -26,20 +26,12 @@ const initialContext: DataContextType = {
     setFeature: () => {},
     showTimeUp: false,
     setShowTimeUp: () => {},
-    hours: 0,
-    setHours: () => {},
-    minutes: 0,
-    setMinutes: () => {},
-    seconds: 0,
-    setSeconds: () => {},
-    duration: 0,
-    setDuration: () => {},
     editMode: false,
     setEditMode: () => {},
     isPlaying: false,
     setIsPlaying: () => {},
-    time: 0,
-    setTime: () => {},
+    timeItems: { hours: 0, minutes: 0, seconds: 0, totalMilliseconds: 0 },
+    setTimeItems: () => {},
 };
 
 export const DataContext = createContext<DataContextType>(initialContext);
@@ -51,31 +43,38 @@ interface DataProviderProps {
 const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
     const [feature, setFeature] = useState<string>("countdown");
     const [showTimeUp, setShowTimeUp] = useState<boolean>(false);
-    const [hours, setHours] = useState<number>(0);
-    const [minutes, setMinutes] = useState<number>(10);
-    const [seconds, setSeconds] = useState<number>(0);
-    const [duration, setDuration] = useState<number>(600000);
     const [editMode, setEditMode] = useState<boolean>(false);
     const [isPlaying, setIsPlaying] = useState(false);
-    const [time, setTime] = useState<number>(duration);
+    const [timeItems, setTimeItems] = useState<TimeItems>({
+        hours: 0,
+        minutes: 10,
+        seconds: 0,
+        totalMilliseconds: 600000,
+    });
 
     useEffect(() => {
         isPlaying &&
-            time > 0 &&
+            timeItems.totalMilliseconds > 0 &&
             setTimeout(() => {
-                setTime(time - 1000);
+                setTimeItems({
+                    ...timeItems,
+                    totalMilliseconds: timeItems.totalMilliseconds - 1000,
+                });
             }, 1000);
 
-        if (time === 0) {
+        if (timeItems.totalMilliseconds === 0) {
             setShowTimeUp(true);
 
             setIsPlaying(false);
 
             setTimeout(() => {
-                setTime(duration);
+                setTimeItems({
+                    ...timeItems,
+                    totalMilliseconds: getMilliseconds(timeItems),
+                });
             }, 1000);
         }
-    }, [time, isPlaying, setShowTimeUp, duration]);
+    }, [timeItems.totalMilliseconds, isPlaying, setShowTimeUp, timeItems]);
 
     return (
         <DataContext.Provider
@@ -84,20 +83,12 @@ const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
                 setFeature,
                 showTimeUp,
                 setShowTimeUp,
-                hours,
-                setHours,
-                minutes,
-                setMinutes,
-                seconds,
-                setSeconds,
-                duration,
-                setDuration,
                 editMode,
                 setEditMode,
                 isPlaying,
                 setIsPlaying,
-                time,
-                setTime,
+                timeItems,
+                setTimeItems,
             }}
         >
             {children}

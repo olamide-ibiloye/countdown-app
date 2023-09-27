@@ -3,15 +3,19 @@ import RestartAltIcon from "@mui/icons-material/RestartAlt";
 import { IconButton } from "@mui/material";
 import { DataContext } from "../../providers/DataProvider";
 import { iconButtonStyle } from "../constants/styles";
+import { getMilliseconds } from "../../utils/getMilliseconds";
 
 const Reset = () => {
-    const { setIsPlaying, duration, setTime } = useContext(DataContext);
+    const { setIsPlaying, timeItems, setTimeItems } = useContext(DataContext);
 
     const toggleReset = () => {
         setIsPlaying(false);
 
         setTimeout(() => {
-            setTime(duration);
+            setTimeItems({
+                ...timeItems,
+                totalMilliseconds: getMilliseconds(timeItems),
+            });
         }, 1000);
     };
 
