@@ -1,8 +1,9 @@
 import { Box } from "@mui/material";
-import React from "react";
+import React, { useContext } from "react";
 import Controls from "../controls/Controls";
 import Display from "../display/Display";
 import Navigation from "../navigation/Navigation";
+import { DataContext } from "../../providers/DataProvider";
 
 const displayStyles = {
     width: "100%",
@@ -12,11 +13,15 @@ const displayStyles = {
 };
 
 const Main = () => {
+    const { isVisible } = useContext(DataContext);
+
     return (
         <Box sx={displayStyles}>
-            <Controls />
+            {isVisible && <Controls />}
+            {!isVisible && <Box></Box>}
             <Display />
-            <Navigation />
+            {isVisible && <Navigation />}
+            {!isVisible && <Box></Box>}
         </Box>
     );
 };

@@ -17,6 +17,7 @@ interface DataContextType {
     setEditMode: React.Dispatch<React.SetStateAction<boolean>>;
     isPlaying: boolean;
     setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>;
+    isVisible: boolean;
     timeItems: TimeItems;
     setTimeItems: React.Dispatch<React.SetStateAction<TimeItems>>;
 }
@@ -30,6 +31,7 @@ const initialContext: DataContextType = {
     setEditMode: () => {},
     isPlaying: false,
     setIsPlaying: () => {},
+    isVisible: false,
     timeItems: { hours: 0, minutes: 0, seconds: 0, totalMilliseconds: 0 },
     setTimeItems: () => {},
 };
@@ -45,12 +47,33 @@ const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
     const [showTimeUp, setShowTimeUp] = useState<boolean>(false);
     const [editMode, setEditMode] = useState<boolean>(false);
     const [isPlaying, setIsPlaying] = useState(false);
+    const [isVisible, setIsVisible] = useState(true);
     const [timeItems, setTimeItems] = useState<TimeItems>({
         hours: 0,
         minutes: 10,
         seconds: 0,
         totalMilliseconds: 600000,
     });
+
+    useEffect(() => {
+        let timeoutId: NodeJS.Timeout;
+
+        const handleMouseMove = () => {
+            setIsVisible(true);
+
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(() => {
+                setIsVisible(false);
+            }, 10000);
+        };
+
+        document.addEventListener("mousemove", handleMouseMove);
+
+        return () => {
+            document.removeEventListener("mousemove", handleMouseMove);
+            clearTimeout(timeoutId);
+        };
+    }, []);
 
     useEffect(() => {
         let timeoutId: NodeJS.Timeout;
@@ -93,6 +116,7 @@ const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
                 setIsPlaying,
                 timeItems,
                 setTimeItems,
+                isVisible,
             }}
         >
             {children}

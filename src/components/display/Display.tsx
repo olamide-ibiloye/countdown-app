@@ -10,7 +10,14 @@ const Display = () => {
     const { feature, editMode } = useContext(DataContext);
 
     return (
-        <Box sx={{ height: "70vh" }}>
+        <Box
+            sx={{
+                height: "70vh",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+            }}
+        >
             {feature === "countdown" && !editMode && <CountDown />}
             {feature === "countdown" && editMode && <EditCountDown />}
             {feature === "time" && <Time />}
