@@ -1,7 +1,9 @@
-import { Button } from "@mui/material";
+import { Button, IconButton } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 import * as React from "react";
 import { DataContext } from "../../providers/DataProvider";
 import { getMilliseconds } from "../../utils/getMilliseconds";
+import { iconButtonStyle } from "../constants/styles";
 
 const SetTime = () => {
     const {
@@ -35,15 +37,31 @@ const SetTime = () => {
         }
     };
 
+    const handleClose = () => {
+        setEditMode(!editMode);
+    };
+
     return (
-        <Button
-            variant="contained"
-            size="large"
-            onClick={handleClick}
-            sx={{ display: feature === "countdown" ? "block" : "none", ml: 2 }}
-        >
-            {editMode ? "Submit" : "Set Time"}
-        </Button>
+        <>
+            {editMode && (
+                <IconButton onClick={handleClose}>
+                    <CloseIcon sx={iconButtonStyle} />
+                </IconButton>
+            )}
+
+            <Button
+                variant="contained"
+                size="large"
+                onClick={handleClick}
+                sx={{
+                    display: feature === "countdown" ? "block" : "none",
+                    ml: 2,
+                    padding: 3,
+                }}
+            >
+                {editMode ? "Confirm" : "Set Countdown"}
+            </Button>
+        </>
     );
 };
 

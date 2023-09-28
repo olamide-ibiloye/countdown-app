@@ -42,18 +42,21 @@ const Navigation = () => {
                 value="countdown"
                 icon={<HourglassTopIcon sx={iconStyle} />}
                 sx={actionStyle}
+                disableRipple
             />
             <BottomNavigationAction
                 label="Time"
                 value="time"
                 icon={<ScheduleIcon sx={iconStyle} />}
                 sx={actionStyle}
+                disableRipple
             />
             <BottomNavigationAction
                 label="Message"
                 value="message"
                 icon={<MessageIcon sx={iconStyle} />}
                 sx={actionStyle}
+                disableRipple
             />
         </BottomNavigation>
     );
