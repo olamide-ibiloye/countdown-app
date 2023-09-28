@@ -61,7 +61,7 @@ const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
                     ...prevState,
                     totalMilliseconds: prevState.totalMilliseconds - 1000,
                 }));
-            }, 1000);
+            }, 980);
         }
 
         return () => {
