@@ -53,28 +53,32 @@ const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
     });
 
     useEffect(() => {
-        isPlaying &&
-            timeItems.totalMilliseconds > 0 &&
-            setTimeout(() => {
-                setTimeItems({
-                    ...timeItems,
-                    totalMilliseconds: timeItems.totalMilliseconds - 1000,
-                });
-            }, 1000);
+        let timeoutId: NodeJS.Timeout;
 
-        if (timeItems.totalMilliseconds === 0) {
-            setShowTimeUp(true);
-
-            setIsPlaying(false);
-
-            setTimeout(() => {
-                setTimeItems({
-                    ...timeItems,
-                    totalMilliseconds: getMilliseconds(timeItems),
-                });
+        if (isPlaying && timeItems.totalMilliseconds > 0) {
+            timeoutId = setTimeout(() => {
+                setTimeItems((prevState) => ({
+                    ...prevState,
+                    totalMilliseconds: prevState.totalMilliseconds - 1000,
+                }));
             }, 1000);
         }
-    }, [timeItems.totalMilliseconds, isPlaying, setShowTimeUp, timeItems]);
+
+        return () => {
+            clearTimeout(timeoutId);
+        };
+    }, [timeItems.totalMilliseconds, isPlaying, setTimeItems, timeItems]);
+
+    if (timeItems.totalMilliseconds === 0) {
+        setShowTimeUp(true);
+
+        setIsPlaying(false);
+
+        setTimeItems((prevState) => ({
+            ...prevState,
+            totalMilliseconds: getMilliseconds(timeItems),
+        }));
+    }
 
     return (
         <DataContext.Provider

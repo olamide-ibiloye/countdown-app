@@ -19,7 +19,7 @@ const FigureBlock: React.FC<FigureBlockProps> = ({ toggle, value }) => {
         if (toggle === "hours") {
             setTimeItems({
                 ...timeItems,
-                hours: timeItems.hours === 59 ? 0 : timeItems.hours + 1,
+                hours: timeItems.hours === 99 ? 0 : timeItems.hours + 1,
             });
         }
 
@@ -39,16 +39,25 @@ const FigureBlock: React.FC<FigureBlockProps> = ({ toggle, value }) => {
     };
 
     const toggleDown = () => {
-        if (toggle === "hours" && timeItems.hours > 0) {
-            setTimeItems({ ...timeItems, hours: timeItems.hours - 1 });
+        if (toggle === "hours") {
+            setTimeItems({
+                ...timeItems,
+                hours: timeItems.hours === 0 ? 99 : timeItems.hours - 1,
+            });
         }
 
-        if (toggle === "minutes" && timeItems.minutes > 0) {
-            setTimeItems({ ...timeItems, minutes: timeItems.minutes - 1 });
+        if (toggle === "minutes") {
+            setTimeItems({
+                ...timeItems,
+                minutes: timeItems.minutes === 0 ? 59 : timeItems.minutes - 1,
+            });
         }
 
-        if (toggle === "seconds" && timeItems.seconds > 0) {
-            setTimeItems({ ...timeItems, seconds: timeItems.seconds - 1 });
+        if (toggle === "seconds") {
+            setTimeItems({
+                ...timeItems,
+                seconds: timeItems.seconds === 0 ? 59 : timeItems.seconds - 1,
+            });
         }
     };
 

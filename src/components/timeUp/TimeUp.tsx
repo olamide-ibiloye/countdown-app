@@ -5,7 +5,7 @@ import { DataContext } from "../../providers/DataProvider";
 import { messageTextStyle } from "../constants/styles";
 
 const TimeUp = () => {
-    const { showTimeUp, setShowTimeUp, setIsPlaying } = useContext(DataContext);
+    const { setShowTimeUp, setIsPlaying } = useContext(DataContext);
 
     const displayStyles = {
         height: "100vh",
@@ -13,7 +13,6 @@ const TimeUp = () => {
         backgroundColor: "red",
         position: "absolute",
         zIndex: 1500,
-        display: showTimeUp ? "block" : "none",
     };
 
     const handleClick = () => {

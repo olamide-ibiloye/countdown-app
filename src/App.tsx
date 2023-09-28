@@ -1,22 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Box } from "@mui/material";
-import DataProvider from "./providers/DataProvider";
 import { Main, TimeUp } from "./components";
+import { DataContext } from "./providers/DataProvider";
 
 const App = () => {
+    const { showTimeUp } = useContext(DataContext);
+
     return (
-        <DataProvider>
-            <Box
-                sx={{
-                    height: "100vh",
-                    width: "100vw",
-                    backgroundColor: "black",
-                }}
-            >
-                <TimeUp />
-                <Main />
-            </Box>
-        </DataProvider>
+        <Box
+            sx={{
+                height: "100vh",
+                width: "100vw",
+                backgroundColor: "black",
+            }}
+        >
+            {showTimeUp && <TimeUp />}
+            <Main />
+        </Box>
     );
 };
 

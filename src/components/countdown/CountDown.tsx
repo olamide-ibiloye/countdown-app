@@ -9,8 +9,9 @@ import {
 
 const Timer = () => {
     const { timeItems } = useContext(DataContext);
+    let currentTime = getFormattedTime(timeItems.totalMilliseconds);
 
-    let hourIncluded: boolean = timeItems.hours > 0;
+    let hourIncluded: boolean = currentTime.length > 5;
 
     return (
         <Box
@@ -32,7 +33,7 @@ const Timer = () => {
                         : hoursExcludedTextSize,
                 }}
             >
-                {getFormattedTime(timeItems.totalMilliseconds)}
+                {currentTime}
             </Typography>
         </Box>
     );

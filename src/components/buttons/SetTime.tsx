@@ -21,7 +21,10 @@ const SetTime = () => {
                 timeItems.seconds !== 0
             ) {
                 const newDuration = getMilliseconds(timeItems);
-                setTimeItems({ ...timeItems, totalMilliseconds: newDuration });
+                setTimeItems((prevState) => ({
+                    ...prevState,
+                    totalMilliseconds: newDuration,
+                }));
 
                 setIsPlaying(false);
                 setEditMode(!editMode);

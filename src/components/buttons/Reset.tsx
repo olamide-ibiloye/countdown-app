@@ -11,12 +11,10 @@ const Reset = () => {
     const toggleReset = () => {
         setIsPlaying(false);
 
-        setTimeout(() => {
-            setTimeItems({
-                ...timeItems,
-                totalMilliseconds: getMilliseconds(timeItems),
-            });
-        }, 1000);
+        setTimeItems((prevState) => ({
+            ...prevState,
+            totalMilliseconds: getMilliseconds(timeItems),
+        }));
     };
 
     return (

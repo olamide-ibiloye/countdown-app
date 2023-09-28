@@ -27,10 +27,10 @@ const PlayAndPause = () => {
             ) {
                 setIsPlaying(!isPlaying);
 
-                setTimeItems({
-                    ...timeItems,
+                setTimeItems((prevState) => ({
+                    ...prevState,
                     totalMilliseconds: getMilliseconds(timeItems),
-                });
+                }));
 
                 setEditMode(!editMode);
             }

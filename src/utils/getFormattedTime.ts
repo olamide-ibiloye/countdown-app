@@ -15,6 +15,10 @@ export const getFormattedTime = (milliseconds: number): string => {
         hours = `0${hours}`;
     }
 
+    if (hours === "00" && minutes === "00") {
+        return `:${seconds}`;
+    }
+
     if (hours === "00") {
         return `${minutes}:${seconds}`;
     }
