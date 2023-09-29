@@ -1,6 +1,11 @@
 import { Box } from "@mui/material";
 import React from "react";
-import { SetCountdown, ButtonGroup } from "../buttons";
+import {
+    SetCountdown,
+    ButtonGroup,
+    SetMessage,
+    ToggleTimeFormat,
+} from "../buttons";
 
 const Controls = () => {
     return (
@@ -16,7 +21,10 @@ const Controls = () => {
         >
             <Box sx={{ display: "flex", flex: 1 }}>
                 <SetCountdown />
+                <SetMessage />
+                <ToggleTimeFormat />
             </Box>
+
             <Box sx={{ display: "flex" }}>
                 <ButtonGroup />
             </Box>

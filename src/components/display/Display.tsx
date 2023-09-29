@@ -21,7 +21,8 @@ const Display = () => {
             {feature === "countdown" && !editMode && <CountDown />}
             {feature === "countdown" && editMode && <EditCountDown />}
             {feature === "time" && <Time />}
-            {feature === "message" && <Message />}
+            {feature === "message" && !editMode && <Message />}
+            {/* {feature === "message" && editMode && <Message />} */}
         </Box>
     );
 };

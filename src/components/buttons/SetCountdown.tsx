@@ -1,9 +1,7 @@
-import { Button, IconButton } from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
 import * as React from "react";
 import { DataContext } from "../../providers/DataProvider";
 import { getMilliseconds } from "../../utils/getMilliseconds";
-import { iconButtonStyle } from "../constants/styles";
+import CustomModifier from "../customized/CustomModifier";
 
 const SetTime = () => {
     const {
@@ -42,26 +40,13 @@ const SetTime = () => {
     };
 
     return (
-        <>
-            {editMode && (
-                <IconButton onClick={handleClose}>
-                    <CloseIcon sx={iconButtonStyle} />
-                </IconButton>
-            )}
-
-            <Button
-                variant="contained"
-                size="large"
-                onClick={handleClick}
-                sx={{
-                    display: feature === "countdown" ? "block" : "none",
-                    ml: 2,
-                    padding: 3,
-                }}
-            >
-                {editMode ? "Confirm" : "Set Countdown"}
-            </Button>
-        </>
+        <CustomModifier
+            condition={editMode && feature === "countdown"}
+            buttonName={editMode ? "Confirm" : "Set Countdown"}
+            handleClose={handleClose}
+            handleButtonClick={handleClick}
+            style={{ display: feature === "countdown" ? "block" : "none" }}
+        />
     );
 };
 

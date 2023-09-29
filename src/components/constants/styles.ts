@@ -14,6 +14,14 @@ export const hoursIncludedTextSize = {
     xl: 380,
 };
 
+export const amPmHoursIncludedTextSize = {
+    xs: 70,
+    sm: 120,
+    md: 170,
+    lg: 210,
+    xl: 300,
+};
+
 export const messageTextSize = {
     xs: 80,
     sm: 110,

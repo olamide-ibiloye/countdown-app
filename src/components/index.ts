@@ -7,3 +7,4 @@ export { default as Controls } from "./controls/Controls";
 export { default as EditCountDown } from "./countdown/CountDown";
 export { default as Main } from "./main/Main";
 export { default as TimeUp } from "./timeUp/TimeUp";
+export { default as CustomButton } from "./customized/CustomButton";

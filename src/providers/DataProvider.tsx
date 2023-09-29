@@ -17,6 +17,8 @@ interface DataContextType {
     setEditMode: React.Dispatch<React.SetStateAction<boolean>>;
     isPlaying: boolean;
     setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>;
+    twentyFourHoursFormat: boolean;
+    setTwentyFourHoursFormat: React.Dispatch<React.SetStateAction<boolean>>;
     isVisible: boolean;
     timeItems: TimeItems;
     setTimeItems: React.Dispatch<React.SetStateAction<TimeItems>>;
@@ -34,6 +36,8 @@ const initialContext: DataContextType = {
     isVisible: false,
     timeItems: { hours: 0, minutes: 0, seconds: 0, totalMilliseconds: 0 },
     setTimeItems: () => {},
+    twentyFourHoursFormat: true,
+    setTwentyFourHoursFormat: () => {},
 };
 
 export const DataContext = createContext<DataContextType>(initialContext);
@@ -48,6 +52,7 @@ const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
     const [editMode, setEditMode] = useState<boolean>(false);
     const [isPlaying, setIsPlaying] = useState(false);
     const [isVisible, setIsVisible] = useState(true);
+    const [twentyFourHoursFormat, setTwentyFourHoursFormat] = useState(true);
     const [timeItems, setTimeItems] = useState<TimeItems>({
         hours: 0,
         minutes: 10,
@@ -84,7 +89,7 @@ const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
                     ...prevState,
                     totalMilliseconds: prevState.totalMilliseconds - 1000,
                 }));
-            }, 980);
+            }, 975);
         }
 
         return () => {
@@ -117,6 +122,8 @@ const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
                 timeItems,
                 setTimeItems,
                 isVisible,
+                twentyFourHoursFormat,
+                setTwentyFourHoursFormat,
             }}
         >
             {children}
