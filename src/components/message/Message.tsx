@@ -9,7 +9,8 @@ const Message = () => {
     return (
         <Box
             sx={{
-                height: "100%",
+                height: "70vh",
+                width: "90vw",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
