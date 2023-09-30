@@ -8,6 +8,11 @@ interface TimeItems {
     totalMilliseconds: number;
 }
 
+interface MessageItems {
+    message: string;
+    tempMessage: string;
+}
+
 interface DataContextType {
     feature: string;
     setFeature: React.Dispatch<React.SetStateAction<string>>;
@@ -19,6 +24,8 @@ interface DataContextType {
     setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>;
     twentyFourHoursFormat: boolean;
     setTwentyFourHoursFormat: React.Dispatch<React.SetStateAction<boolean>>;
+    message: MessageItems;
+    setMessage: React.Dispatch<React.SetStateAction<MessageItems>>;
     isVisible: boolean;
     timeItems: TimeItems;
     setTimeItems: React.Dispatch<React.SetStateAction<TimeItems>>;
@@ -35,6 +42,8 @@ const initialContext: DataContextType = {
     setIsPlaying: () => {},
     isVisible: false,
     timeItems: { hours: 0, minutes: 0, seconds: 0, totalMilliseconds: 0 },
+    message: { message: "", tempMessage: "" },
+    setMessage: () => {},
     setTimeItems: () => {},
     twentyFourHoursFormat: true,
     setTwentyFourHoursFormat: () => {},
@@ -53,6 +62,10 @@ const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
     const [isPlaying, setIsPlaying] = useState(false);
     const [isVisible, setIsVisible] = useState(true);
     const [twentyFourHoursFormat, setTwentyFourHoursFormat] = useState(true);
+    const [message, setMessage] = useState({
+        message: "You have 5 more minutes!",
+        tempMessage: "",
+    });
     const [timeItems, setTimeItems] = useState<TimeItems>({
         hours: 0,
         minutes: 10,
@@ -121,6 +134,8 @@ const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
                 setIsPlaying,
                 timeItems,
                 setTimeItems,
+                message,
+                setMessage,
                 isVisible,
                 twentyFourHoursFormat,
                 setTwentyFourHoursFormat,

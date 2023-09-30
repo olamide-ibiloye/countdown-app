@@ -1,9 +1,10 @@
 import { Box, Typography } from "@mui/material";
-import React from "react";
+import React, { useContext } from "react";
 import { messageTextStyle } from "../constants/styles";
+import { DataContext } from "../../providers/DataProvider";
 
 const Message = () => {
-    const userMessage = "You have 5 more minutes!";
+    const { message } = useContext(DataContext);
 
     return (
         <Box
@@ -15,7 +16,7 @@ const Message = () => {
             }}
         >
             <Typography variant="h1" sx={messageTextStyle}>
-                {userMessage.toUpperCase()}
+                {message.message.toUpperCase()}
             </Typography>
         </Box>
     );

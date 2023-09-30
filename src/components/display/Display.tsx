@@ -5,6 +5,7 @@ import { DataContext } from "../../providers/DataProvider";
 import Time from "../time/Time";
 import Message from "../message/Message";
 import EditCountDown from "../editCountdown/EditCountDown";
+import EditMessage from "../editMessage/EditMessage";
 
 const Display = () => {
     const { feature, editMode } = useContext(DataContext);
@@ -22,7 +23,7 @@ const Display = () => {
             {feature === "countdown" && editMode && <EditCountDown />}
             {feature === "time" && <Time />}
             {feature === "message" && !editMode && <Message />}
-            {/* {feature === "message" && editMode && <Message />} */}
+            {feature === "message" && editMode && <EditMessage />}
         </Box>
     );
 };
