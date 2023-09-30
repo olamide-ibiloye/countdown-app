@@ -6,18 +6,15 @@ import { iconButtonStyle } from "../constants/styles";
 import { getMilliseconds } from "../../utils/getMilliseconds";
 
 const Reset = () => {
-    const { feature, setIsPlaying, timeItems, setTimeItems } =
-        useContext(DataContext);
+    const { setIsPlaying, timeItems, setTimeItems } = useContext(DataContext);
 
     const toggleReset = () => {
-        if (feature === "countdown") {
-            setIsPlaying(false);
+        setIsPlaying(false);
 
-            setTimeItems((prevState) => ({
-                ...prevState,
-                totalMilliseconds: getMilliseconds(timeItems),
-            }));
-        }
+        setTimeItems((prevState) => ({
+            ...prevState,
+            totalMilliseconds: getMilliseconds(timeItems),
+        }));
     };
 
     return (

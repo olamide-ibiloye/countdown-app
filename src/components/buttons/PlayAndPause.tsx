@@ -8,7 +8,6 @@ import { getMilliseconds } from "../../utils/getMilliseconds";
 
 const PlayAndPause = () => {
     const {
-        feature,
         isPlaying,
         setIsPlaying,
         editMode,
@@ -18,24 +17,22 @@ const PlayAndPause = () => {
     } = useContext(DataContext);
 
     const togglePlay = () => {
-        if (feature === "countdown") {
-            if (!editMode) setIsPlaying(!isPlaying);
+        if (!editMode) setIsPlaying(!isPlaying);
 
-            if (editMode) {
-                if (
-                    timeItems.hours !== 0 ||
-                    timeItems.minutes !== 0 ||
-                    timeItems.seconds !== 0
-                ) {
-                    setIsPlaying(!isPlaying);
+        if (editMode) {
+            if (
+                timeItems.hours !== 0 ||
+                timeItems.minutes !== 0 ||
+                timeItems.seconds !== 0
+            ) {
+                setIsPlaying(!isPlaying);
 
-                    setTimeItems((prevState) => ({
-                        ...prevState,
-                        totalMilliseconds: getMilliseconds(timeItems),
-                    }));
+                setTimeItems((prevState) => ({
+                    ...prevState,
+                    totalMilliseconds: getMilliseconds(timeItems),
+                }));
 
-                    setEditMode(!editMode);
-                }
+                setEditMode(!editMode);
             }
         }
     };
