@@ -2,22 +2,17 @@ import { Box, Typography } from "@mui/material";
 import React, { useContext, useEffect, useState } from "react";
 import { amPmHoursIncludedTextSize } from "../constants/styles";
 import { DataContext } from "../../providers/DataProvider";
+import { getCurrentTime } from "../../utils/functions";
 
 const Time = () => {
     const { twentyFourHoursFormat } = useContext(DataContext);
     const [currentTime, setCurrentTime] = useState<string>(
-        new Date().toLocaleTimeString("en-US", {
-            hour12: !twentyFourHoursFormat,
-        })
+        getCurrentTime(twentyFourHoursFormat)
     );
 
     useEffect(() => {
         const intervalId = setInterval(() => {
-            setCurrentTime(
-                new Date().toLocaleTimeString("en-US", {
-                    hour12: !twentyFourHoursFormat,
-                })
-            );
+            setCurrentTime(getCurrentTime(twentyFourHoursFormat));
         }, 1000);
 
         return () => clearInterval(intervalId);

@@ -1,5 +1,14 @@
 import React, { createContext, useState, ReactNode, useEffect } from "react";
-import { getMilliseconds } from "../utils/getMilliseconds";
+import { getMilliseconds } from "../utils/functions";
+
+const DEFAULT_TIME = {
+    HOURS: 0,
+    MINUTES: 10,
+    SECONDS: 0,
+    MILLISECONDS: 600_000,
+};
+const TIME_OUT = 10_000;
+const ONE_SECOND = 1_000;
 
 interface TimeItems {
     hours: number;
@@ -49,16 +58,16 @@ const initialContext: DataContextType = {
     setTwentyFourHoursFormat: () => {},
 };
 
-export const DataContext = createContext<DataContextType>(initialContext);
+export const DataContext = createContext(initialContext);
 
 interface DataProviderProps {
     children: ReactNode;
 }
 
 const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
-    const [feature, setFeature] = useState<string>("countdown");
-    const [showTimeUp, setShowTimeUp] = useState<boolean>(false);
-    const [editMode, setEditMode] = useState<boolean>(false);
+    const [feature, setFeature] = useState("countdown");
+    const [showTimeUp, setShowTimeUp] = useState(false);
+    const [editMode, setEditMode] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
     const [isVisible, setIsVisible] = useState(true);
     const [twentyFourHoursFormat, setTwentyFourHoursFormat] = useState(true);
@@ -66,11 +75,11 @@ const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
         message: "You have 5 more minutes!",
         tempMessage: "",
     });
-    const [timeItems, setTimeItems] = useState<TimeItems>({
-        hours: 0,
-        minutes: 10,
-        seconds: 0,
-        totalMilliseconds: 600000,
+    const [timeItems, setTimeItems] = useState({
+        hours: DEFAULT_TIME.HOURS,
+        minutes: DEFAULT_TIME.MINUTES,
+        seconds: DEFAULT_TIME.SECONDS,
+        totalMilliseconds: DEFAULT_TIME.MILLISECONDS,
     });
 
     useEffect(() => {
@@ -82,7 +91,7 @@ const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
             clearTimeout(timeoutId);
             timeoutId = setTimeout(() => {
                 setIsVisible(false);
-            }, 10000);
+            }, TIME_OUT);
         };
 
         document.addEventListener("mousemove", handleMouseMove);
@@ -100,7 +109,7 @@ const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
             timeoutId = setTimeout(() => {
                 setTimeItems((prevState) => ({
                     ...prevState,
-                    totalMilliseconds: prevState.totalMilliseconds - 1000,
+                    totalMilliseconds: prevState.totalMilliseconds - ONE_SECOND,
                 }));
             }, 975);
         }
@@ -108,7 +117,7 @@ const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
         return () => {
             clearTimeout(timeoutId);
         };
-    }, [timeItems.totalMilliseconds, isPlaying, setTimeItems, timeItems]);
+    }, [isPlaying, timeItems]);
 
     if (timeItems.totalMilliseconds === 0) {
         setShowTimeUp(true);

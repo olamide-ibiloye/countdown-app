@@ -1,7 +1,8 @@
 import * as React from "react";
 import { DataContext } from "../../providers/DataProvider";
-import { getMilliseconds } from "../../utils/getMilliseconds";
+
 import CustomModifier from "../customized/CustomModifier";
+import { getMilliseconds } from "../../utils/functions";
 
 const SetTime = () => {
     const {

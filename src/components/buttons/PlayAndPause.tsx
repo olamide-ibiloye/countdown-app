@@ -4,7 +4,7 @@ import PauseCircleOutlineIcon from "@mui/icons-material/PauseCircleOutline";
 import { IconButton } from "@mui/material";
 import { DataContext } from "../../providers/DataProvider";
 import { iconButtonStyle } from "../constants/styles";
-import { getMilliseconds } from "../../utils/getMilliseconds";
+import { getMilliseconds } from "../../utils/functions";
 
 const PlayAndPause = () => {
     const {

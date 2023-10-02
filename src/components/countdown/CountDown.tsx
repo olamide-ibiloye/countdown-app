@@ -1,11 +1,12 @@
 import { Box, Typography } from "@mui/material";
 import React, { useContext } from "react";
-import { getFormattedTime } from "../../utils/getFormattedTime";
+
 import { DataContext } from "../../providers/DataProvider";
 import {
     hoursExcludedTextSize,
     hoursIncludedTextSize,
 } from "../constants/styles";
+import { getFormattedTime } from "../../utils/functions";
 
 const Timer = () => {
     const { timeItems } = useContext(DataContext);
