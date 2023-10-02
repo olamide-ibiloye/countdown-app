@@ -2,11 +2,8 @@ import { Box, Typography } from "@mui/material";
 import React, { useContext } from "react";
 
 import { DataContext } from "../../providers/DataProvider";
-import {
-    hoursExcludedTextSize,
-    hoursIncludedTextSize,
-} from "../constants/styles";
 import { getFormattedTime } from "../../utils/functions";
+import { sizes } from "../constants/styles";
 
 const Timer = () => {
     const { timeItems } = useContext(DataContext);
@@ -30,8 +27,8 @@ const Timer = () => {
                     color: "white",
                     fontWeight: 900,
                     fontSize: hourIncluded
-                        ? hoursIncludedTextSize
-                        : hoursExcludedTextSize,
+                        ? sizes.hoursIncluded
+                        : sizes.hoursExcluded,
                 }}
             >
                 {currentTime}

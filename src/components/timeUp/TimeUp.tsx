@@ -2,7 +2,7 @@ import { Box, IconButton, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import React, { useContext } from "react";
 import { DataContext } from "../../providers/DataProvider";
-import { messageTextStyle } from "../constants/styles";
+import { sizes } from "../constants/styles";
 
 const TimeUp = () => {
     const { setShowTimeUp, setIsPlaying } = useContext(DataContext);
@@ -31,7 +31,7 @@ const TimeUp = () => {
                 <CloseIcon sx={{ fontSize: 100, color: "white" }} />
             </IconButton>
 
-            <Typography variant="h1" sx={messageTextStyle}>
+            <Typography variant="h1" sx={sizes.message}>
                 {timeUpMessage.toUpperCase()}
             </Typography>
         </Box>

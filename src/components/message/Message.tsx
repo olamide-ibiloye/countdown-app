@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import React, { useContext } from "react";
-import { messageTextStyle } from "../constants/styles";
 import { DataContext } from "../../providers/DataProvider";
+import { messageTextStyle } from "../constants/styles";
 
 const Message = () => {
     const { message } = useContext(DataContext);

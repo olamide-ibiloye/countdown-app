@@ -22,6 +22,7 @@ const SetTime = () => {
                 timeItems.seconds !== 0
             ) {
                 const newDuration = getMilliseconds(timeItems);
+
                 setTimeItems((prevState) => ({
                     ...prevState,
                     totalMilliseconds: newDuration,

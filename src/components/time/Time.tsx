@@ -1,8 +1,8 @@
 import { Box, Typography } from "@mui/material";
 import React, { useContext, useEffect, useState } from "react";
-import { amPmHoursIncludedTextSize } from "../constants/styles";
 import { DataContext } from "../../providers/DataProvider";
 import { getCurrentTime } from "../../utils/functions";
+import { sizes } from "../constants/styles";
 
 const Time = () => {
     const { twentyFourHoursFormat } = useContext(DataContext);
@@ -32,7 +32,7 @@ const Time = () => {
                 sx={{
                     color: "white",
                     fontWeight: 900,
-                    fontSize: amPmHoursIncludedTextSize,
+                    fontSize: sizes.amPmHoursIncluded,
                 }}
             >
                 {currentTime}

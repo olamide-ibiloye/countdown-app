@@ -2,8 +2,8 @@ import { Box, IconButton, Typography } from "@mui/material";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import React, { useContext } from "react";
-import { hoursIncludedTextSize } from "../constants/styles";
 import { DataContext } from "../../providers/DataProvider";
+import { sizes } from "../constants/styles";
 
 const buttonStyle = { fontSize: 60, color: "white" };
 
@@ -80,7 +80,7 @@ const FigureBlock: React.FC<FigureBlockProps> = ({ toggle, value }) => {
                 sx={{
                     color: "white",
                     fontWeight: 900,
-                    fontSize: hoursIncludedTextSize,
+                    fontSize: sizes.hoursIncluded,
                 }}
             >
                 {value < 10 ? `0${value}` : value}
