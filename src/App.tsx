@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Box } from "@mui/material";
 import { Main, TimeUp } from "./components";
 import { DataContext } from "./providers/DataProvider";
+import Alert from "./components/alert/Alert";
 
 const App = () => {
     const { showTimeUp } = useContext(DataContext);
@@ -14,6 +15,7 @@ const App = () => {
                 backgroundColor: "black",
             }}
         >
+            <Alert displayTimeMilliseconds={120000} />
             {showTimeUp && <TimeUp />}
             <Main />
         </Box>
