@@ -15,6 +15,7 @@ const App = () => {
                 backgroundColor: "black",
             }}
         >
+            <Alert displayTimeMilliseconds={300000} />
             <Alert displayTimeMilliseconds={120000} />
             {showTimeUp && <TimeUp />}
             <Main />

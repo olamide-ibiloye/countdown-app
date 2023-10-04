@@ -1,12 +1,7 @@
 import React, { createContext, useState, ReactNode, useEffect } from "react";
 import { getMilliseconds } from "../utils/functions";
+import { useLocalStorage } from "../customHooks/useLocalStorage";
 
-const DEFAULT_TIME = {
-    HOURS: 0,
-    MINUTES: 10,
-    SECONDS: 0,
-    MILLISECONDS: 600_000,
-};
 const TIME_OUT = 10_000;
 const ONE_SECOND = 1_000;
 
@@ -70,16 +65,25 @@ const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
     const [editMode, setEditMode] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
     const [isVisible, setIsVisible] = useState(true);
-    const [twentyFourHoursFormat, setTwentyFourHoursFormat] = useState(true);
-    const [message, setMessage] = useState({
-        message: "You have 5 more minutes!",
-        tempMessage: "",
+    const [twentyFourHoursFormat, setTwentyFourHoursFormat] = useLocalStorage({
+        key: "twentyFourHoursFormat",
+        defaultValue: JSON.stringify(true),
     });
-    const [timeItems, setTimeItems] = useState({
-        hours: DEFAULT_TIME.HOURS,
-        minutes: DEFAULT_TIME.MINUTES,
-        seconds: DEFAULT_TIME.SECONDS,
-        totalMilliseconds: DEFAULT_TIME.MILLISECONDS,
+    const [message, setMessage] = useLocalStorage({
+        key: "message",
+        defaultValue: JSON.stringify({
+            message: "You have 5 more minutes!",
+            tempMessage: "",
+        }),
+    });
+    const [timeItems, setTimeItems] = useLocalStorage({
+        key: "timeItems",
+        defaultValue: JSON.stringify({
+            seconds: 0,
+            minutes: 10,
+            hours: 0,
+            totalMilliseconds: 600000,
+        }),
     });
 
     useEffect(() => {
@@ -107,27 +111,27 @@ const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
 
         if (isPlaying && timeItems.totalMilliseconds > 0) {
             timeoutId = setTimeout(() => {
-                setTimeItems((prevState) => ({
-                    ...prevState,
-                    totalMilliseconds: prevState.totalMilliseconds - ONE_SECOND,
-                }));
+                setTimeItems({
+                    ...timeItems,
+                    totalMilliseconds: timeItems.totalMilliseconds - ONE_SECOND,
+                });
             }, 975);
         }
 
         return () => {
             clearTimeout(timeoutId);
         };
-    }, [isPlaying, timeItems]);
+    }, [isPlaying, timeItems, setTimeItems]);
 
     if (timeItems.totalMilliseconds === 0) {
         setShowTimeUp(true);
 
         setIsPlaying(false);
 
-        setTimeItems((prevState) => ({
-            ...prevState,
+        setTimeItems({
+            ...timeItems,
             totalMilliseconds: getMilliseconds(timeItems),
-        }));
+        });
     }
 
     return (
