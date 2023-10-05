@@ -1,11 +1,11 @@
 import { Box, IconButton, Typography } from "@mui/material";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
 import React, { useContext } from "react";
 import { DataContext } from "../../providers/DataProvider";
 import { sizes } from "../constants/styles";
 
-const buttonStyle = { fontSize: 60, color: "white" };
+const buttonStyle = { fontSize: 60, color: "#1976d2" };
 
 interface FigureBlockProps {
     toggle: "hours" | "minutes" | "seconds";
@@ -48,7 +48,7 @@ const FigureBlock = ({ toggle, value }: FigureBlockProps) => {
             }}
         >
             <IconButton onClick={toggleUp}>
-                <KeyboardArrowUpIcon sx={buttonStyle} />
+                <AddIcon sx={buttonStyle} />
             </IconButton>
 
             <Typography
@@ -63,7 +63,7 @@ const FigureBlock = ({ toggle, value }: FigureBlockProps) => {
             </Typography>
 
             <IconButton onClick={toggleDown}>
-                <KeyboardArrowDownIcon sx={buttonStyle} />
+                <RemoveIcon sx={buttonStyle} />
             </IconButton>
         </Box>
     );
