@@ -8,57 +8,33 @@ import { sizes } from "../constants/styles";
 const buttonStyle = { fontSize: 60, color: "white" };
 
 interface FigureBlockProps {
-    toggle: string;
+    toggle: "hours" | "minutes" | "seconds";
     value: number;
 }
 
-const FigureBlock: React.FC<FigureBlockProps> = ({ toggle, value }) => {
-    const { timeItems, setTimeItems } = useContext(DataContext);
+const FigureBlock = ({ toggle, value }: FigureBlockProps) => {
+    const { setTimeItems } = useContext(DataContext);
 
     const toggleUp = () => {
-        if (toggle === "hours") {
-            setTimeItems({
-                ...timeItems,
-                hours: timeItems.hours === 99 ? 0 : timeItems.hours + 1,
-            });
-        }
+        setTimeItems((prevTimeItems) => {
+            const newValue =
+                toggle === "hours"
+                    ? (prevTimeItems.hours + 1) % 100
+                    : (prevTimeItems[toggle] + 1) % 60;
 
-        if (toggle === "minutes") {
-            setTimeItems({
-                ...timeItems,
-                minutes: timeItems.minutes === 59 ? 0 : timeItems.minutes + 1,
-            });
-        }
-
-        if (toggle === "seconds") {
-            setTimeItems({
-                ...timeItems,
-                seconds: timeItems.seconds === 59 ? 0 : timeItems.seconds + 1,
-            });
-        }
+            return { ...prevTimeItems, [toggle]: newValue };
+        });
     };
 
     const toggleDown = () => {
-        if (toggle === "hours") {
-            setTimeItems({
-                ...timeItems,
-                hours: timeItems.hours === 0 ? 99 : timeItems.hours - 1,
-            });
-        }
+        setTimeItems((prevTimeItems) => {
+            const newValue =
+                toggle === "hours"
+                    ? (prevTimeItems.hours - 1 + 100) % 100
+                    : (prevTimeItems[toggle] - 1 + 60) % 60;
 
-        if (toggle === "minutes") {
-            setTimeItems({
-                ...timeItems,
-                minutes: timeItems.minutes === 0 ? 59 : timeItems.minutes - 1,
-            });
-        }
-
-        if (toggle === "seconds") {
-            setTimeItems({
-                ...timeItems,
-                seconds: timeItems.seconds === 0 ? 59 : timeItems.seconds - 1,
-            });
-        }
+            return { ...prevTimeItems, [toggle]: newValue };
+        });
     };
 
     return (

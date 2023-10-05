@@ -1,12 +1,12 @@
 import { Box, Typography } from "@mui/material";
 import React, { useContext } from "react";
-
 import { DataContext } from "../../providers/DataProvider";
 import { getFormattedTime } from "../../utils/functions";
 import { sizes } from "../constants/styles";
 
 const Timer = () => {
     const { timeItems } = useContext(DataContext);
+
     let currentTime = getFormattedTime(timeItems.totalMilliseconds);
 
     let hourIncluded: boolean = currentTime.length > 5;
