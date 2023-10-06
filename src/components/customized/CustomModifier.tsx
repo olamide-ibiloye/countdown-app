@@ -1,18 +1,18 @@
+import React from "react";
 import { IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import React from "react";
-import { iconButtonStyle } from "../constants/styles";
 import CustomButton from "./CustomButton";
+import { iconButtonStyle } from "../constants/styles";
 
 interface CustomModifierProps {
     condition: boolean;
     buttonName: string;
     handleClose: () => void;
     handleButtonClick: () => void;
-    style: object;
+    style: React.CSSProperties;
 }
 
-const CustomModifier = ({
+const CustomModifier: React.FC<CustomModifierProps> = ({
     condition,
     buttonName,
     handleClose,

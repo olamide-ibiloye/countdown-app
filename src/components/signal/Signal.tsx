@@ -7,7 +7,7 @@ import { DataContext } from "../../providers/DataProvider";
 interface SignalProps {
     message: string;
     closeButton?: boolean;
-    style?: object;
+    style?: React.CSSProperties;
 }
 
 const displayStyles = {

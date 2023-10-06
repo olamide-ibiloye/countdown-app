@@ -1,6 +1,5 @@
-import * as React from "react";
+import React, { useContext } from "react";
 import { DataContext } from "../../providers/DataProvider";
-
 import CustomModifier from "../customized/CustomModifier";
 import { getMilliseconds } from "../../utils/functions";
 
@@ -12,41 +11,40 @@ const SetTime = () => {
         setIsPlaying,
         timeItems,
         setTimeItems,
-    } = React.useContext(DataContext);
+    } = useContext(DataContext);
 
-    const handleClick = () => {
-        if (editMode) {
-            if (
-                timeItems.hours !== 0 ||
-                timeItems.minutes !== 0 ||
-                timeItems.seconds !== 0
-            ) {
-                const newDuration = getMilliseconds(timeItems);
+    const handleConfirm = () => {
+        if (editMode && hasNonZeroDuration()) {
+            const newDuration = getMilliseconds(timeItems);
 
-                setTimeItems((prevState) => ({
-                    ...prevState,
-                    totalMilliseconds: newDuration,
-                }));
+            setTimeItems((prevState) => ({
+                ...prevState,
+                totalMilliseconds: newDuration,
+            }));
 
-                setIsPlaying(false);
-                setEditMode(!editMode);
-            }
-        } else {
             setIsPlaying(false);
-            setEditMode(!editMode);
         }
+
+        setEditMode(!editMode);
     };
 
     const handleClose = () => {
         setEditMode(!editMode);
     };
 
+    const hasNonZeroDuration = () => {
+        const { hours, minutes, seconds } = timeItems;
+        return hours !== 0 || minutes !== 0 || seconds !== 0;
+    };
+
+    const buttonName = editMode ? "Confirm" : "Set Countdown";
+
     return (
         <CustomModifier
             condition={editMode && feature === "countdown"}
-            buttonName={editMode ? "Confirm" : "Set Countdown"}
+            buttonName={buttonName}
             handleClose={handleClose}
-            handleButtonClick={handleClick}
+            handleButtonClick={handleConfirm}
             style={{ display: feature === "countdown" ? "block" : "none" }}
         />
     );

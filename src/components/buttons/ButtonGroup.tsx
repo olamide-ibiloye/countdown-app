@@ -10,8 +10,12 @@ const ButtonGroup = () => {
 
     return (
         <Box>
-            {feature === "countdown" && <PlayAndPause />}
-            {feature === "countdown" && <Reset />}
+            {feature === "countdown" && (
+                <>
+                    <PlayAndPause />
+                    <Reset />
+                </>
+            )}
             <FullScreen />
         </Box>
     );

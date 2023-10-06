@@ -16,17 +16,11 @@ const PlayAndPause = () => {
         setTimeItems,
     } = useContext(DataContext);
 
-    const togglePlay = () => {
-        if (!editMode) setIsPlaying(!isPlaying);
+    const handlePlayToggle = () => {
+        if (canTogglePlay()) {
+            setIsPlaying(!isPlaying);
 
-        if (editMode) {
-            if (
-                timeItems.hours !== 0 ||
-                timeItems.minutes !== 0 ||
-                timeItems.seconds !== 0
-            ) {
-                setIsPlaying(!isPlaying);
-
+            if (editMode) {
                 setTimeItems((prevState) => ({
                     ...prevState,
                     totalMilliseconds: getMilliseconds(timeItems),
@@ -37,10 +31,20 @@ const PlayAndPause = () => {
         }
     };
 
+    const canTogglePlay = () => {
+        if (!editMode) return true;
+
+        const { hours, minutes, seconds } = timeItems;
+        return hours !== 0 || minutes !== 0 || seconds !== 0;
+    };
+
     return (
-        <IconButton onClick={togglePlay}>
-            {!isPlaying && <PlayCircleOutlineIcon sx={iconButtonStyle} />}
-            {isPlaying && <PauseCircleOutlineIcon sx={iconButtonStyle} />}
+        <IconButton onClick={handlePlayToggle}>
+            {isPlaying ? (
+                <PauseCircleOutlineIcon sx={iconButtonStyle} />
+            ) : (
+                <PlayCircleOutlineIcon sx={iconButtonStyle} />
+            )}
         </IconButton>
     );
 };

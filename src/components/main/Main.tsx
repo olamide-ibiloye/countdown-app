@@ -17,11 +17,9 @@ const Main = () => {
 
     return (
         <Box sx={displayStyles}>
-            {isVisible && <Controls />}
-            {!isVisible && <Box></Box>}
+            {isVisible ? <Controls /> : <Box></Box>}
             <Display />
-            {isVisible && <Navigation />}
-            {!isVisible && <Box></Box>}
+            {isVisible ? <Navigation /> : <Box></Box>}
         </Box>
     );
 };

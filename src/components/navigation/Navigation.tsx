@@ -1,11 +1,10 @@
-import * as React from "react";
+import React, { useContext } from "react";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import ScheduleIcon from "@mui/icons-material/Schedule";
 import HourglassTopIcon from "@mui/icons-material/HourglassTop";
 import MessageIcon from "@mui/icons-material/Message";
 import { DataContext } from "../../providers/DataProvider";
-import { useContext } from "react";
 
 const iconStyle = {
     fontSize: { xs: 40, md: 50 },
@@ -23,7 +22,7 @@ const actionStyle = {
 const Navigation = () => {
     const { feature, setFeature } = useContext(DataContext);
 
-    const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+    const handleChange = (_: React.SyntheticEvent, newValue: string) => {
         setFeature(newValue);
     };
 

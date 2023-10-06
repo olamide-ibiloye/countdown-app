@@ -1,5 +1,5 @@
-import { Box, Typography } from "@mui/material";
 import React, { useContext } from "react";
+import { Box, Typography } from "@mui/material";
 import { DataContext } from "../../providers/DataProvider";
 import { getFormattedTime } from "../../utils/functions";
 import { sizes } from "../constants/styles";
@@ -7,9 +7,8 @@ import { sizes } from "../constants/styles";
 const Timer = () => {
     const { timeItems } = useContext(DataContext);
 
-    let currentTime = getFormattedTime(timeItems.totalMilliseconds);
-
-    let hourIncluded: boolean = currentTime.length > 5;
+    const currentTime = getFormattedTime(timeItems.totalMilliseconds);
+    const hourIncluded = currentTime.length > 5;
 
     return (
         <Box

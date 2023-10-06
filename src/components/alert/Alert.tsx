@@ -19,7 +19,7 @@ const Alert = ({
     const minutes = displayTimeMilliseconds / 1000 / 60;
     const alertMessage = `You have less than ${minutes} minutes!`;
 
-    let alertShouldShow =
+    const alertShouldShow =
         isPlaying &&
         totalMilliseconds >= displayTimeMilliseconds - durationMilliseconds &&
         totalMilliseconds <= displayTimeMilliseconds;
