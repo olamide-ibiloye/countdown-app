@@ -21,10 +21,9 @@ const SetTime = () => {
                 ...prevState,
                 totalMilliseconds: newDuration,
             }));
-
-            setIsPlaying(false);
         }
 
+        setIsPlaying(false);
         setEditMode(!editMode);
     };
 
