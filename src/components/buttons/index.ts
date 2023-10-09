@@ -4,3 +4,4 @@ export { default as FullScreen } from "./FullScreen";
 export { default as PlayAndPause } from "./PlayAndPause";
 export { default as ButtonGroup } from "./ButtonGroup";
 export { default as ToggleTimeFormat } from "./ToggleTimeFormat";
+export { default as Preset } from "./Preset";

@@ -79,9 +79,9 @@ const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
     const [timeItems, setTimeItems] = useLocalStorage({
         key: "timeItems",
         defaultValue: JSON.stringify({
-            seconds: 0,
-            minutes: 10,
             hours: 0,
+            minutes: 10,
+            seconds: 0,
             totalMilliseconds: 600000,
         }),
     });

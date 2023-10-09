@@ -5,7 +5,7 @@ import React, { useContext } from "react";
 import { DataContext } from "../../providers/DataProvider";
 import { sizes } from "../constants/styles";
 
-const buttonStyle = { fontSize: 60, color: "#1976d2" };
+const buttonStyle = { fontSize: { xs: 40, md: 60 }, color: "#1976d2" };
 
 interface FigureBlockProps {
     toggle: "hours" | "minutes" | "seconds";
